@@ -26,6 +26,7 @@ public:
     }
     
     bool leafSimilar(TreeNode* root1, TreeNode* root2) {
+        std::ios_base::sync_with_stdio(false); std::cin.tie(nullptr); std::cout.tie(nullptr);
         s.clear();
         s1.clear();
         getleaf(root1,s);
