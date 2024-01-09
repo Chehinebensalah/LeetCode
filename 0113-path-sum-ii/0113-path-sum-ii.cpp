@@ -34,6 +34,9 @@ public:
     }
     
     vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
+        std::ios_base::sync_with_stdio(false);
+        std::cin.tie(nullptr); 
+        std::cout.tie(nullptr);
         if( root==nullptr){
             return {};
         }
