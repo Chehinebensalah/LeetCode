@@ -1,0 +1,44 @@
+class Solution {
+public:
+    int n ; 
+    int dx[3]={-1,-1,-1} ;
+    int dy[3]={-1,0,1};
+    bool canmove(int x,int y){
+        return x>=0 && x<n && y>=0 && y<n ; 
+    }
+
+    int minFallingPathSum(vector<vector<int>>& matrix) {
+        n = matrix.size();
+        int ans = 1e7 ; 
+        vector<vector<int>> dp(n,vector<int>(n,0));
+        for(int i=0;i<n;i++) dp[0][i]=matrix[0][i];
+        for(int x=1;x<n;x++){
+
+            for(int y=0;y<n;y++){
+                int mn = 1e7;
+                
+                for(int i=0;i<3;i++){
+                    
+                    int prevx = x + dx[i];
+                    int prevy = y + dy[i];
+                    
+                    if(canmove(prevx,prevy)){
+                        mn=min(mn , dp[prevx][prevy]);
+                    }
+                }
+
+                dp[x][y]+=mn+matrix[x][y];
+            }
+        }
+
+        for(int i = 0;i<n;i++) 
+            ans = min(ans , dp[n-1][i]);
+        
+        return ans; 
+    }
+    /*
+    2 1 3 
+    7 6 5
+   13 13 14
+    */
+};
