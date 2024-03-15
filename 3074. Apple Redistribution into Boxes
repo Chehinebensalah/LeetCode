@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int minimumBoxes(vector<int>& a, vector<int>& c) {
+        int n=a.size(),nc=c.size(),ans=0,sum=0;
+        sort(c.begin(),c.end()); 
+        for(int i=1;i<n;i++)
+            a[i]+=a[i-1];
+        for(int i=nc-1;i>=0;i--){
+            a[n-1]-=c[i];
+            ans++;
+            if(a[n-1]<=0) return ans;
+            }
+        return 0;
+    }
+};
