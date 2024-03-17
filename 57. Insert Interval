@@ -1,0 +1,21 @@
+#define pb push_back
+class Solution {
+public:
+    vector<vector<int>> insert(vector<vector<int>>& intv, vector<int>& ni) {
+        intv.pb(ni); 
+        sort(intv.begin(),intv.end());
+        int n = intv.size(),i=0; 
+        vector<vector<int>> ans;
+        while(i<n){
+            int l = intv[i][0], r = intv[i][1],j=i+1;
+            while(j<n && r>=intv[j][0]){
+                r=max(r,intv[j][1]);
+                j++;
+            }
+            i=j;
+            ans.pb({l,r});
+        }
+        return ans;
+    }
+};
+
