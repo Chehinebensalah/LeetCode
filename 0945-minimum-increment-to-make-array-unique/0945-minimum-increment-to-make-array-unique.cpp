@@ -1,20 +1,17 @@
 class Solution {
 public:
     int minIncrementForUnique(vector<int>& nums) {
-        map<int,int> m;
-        int n = nums.size(), ans = 0,mx=-1;
+        int n = nums.size(), ans = 0;
         sort(nums.begin(),nums.end());
-
         for(int i=0;i<n-1;i++){
             if(nums[i]==nums[i+1]){
                 nums[i+1]++;
                 ans++;
             }else if(nums[i]>nums[i+1]){
-                cout<<"abs"<<abs(nums[i+1]-nums[i]+1);
-                ans+=abs(nums[i+1]-nums[i])+1;
-                nums[i+1]+=abs(nums[i+1]-nums[i])+1;
+                int to_add = abs(nums[i+1]-nums[i])+1;
+                ans+=to_add;
+                nums[i+1]+=to_add;
             }
-            cout<<ans<<" ";
         }
         return ans;
     }
