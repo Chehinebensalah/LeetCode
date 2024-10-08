@@ -1,4 +1,4 @@
-SELECT X,Y,Z,
+SELECT *,
     CASE WHEN x+y > z AND x+z > y AND y+z > x 
          THEN 'Yes'
          ELSE 'No'
